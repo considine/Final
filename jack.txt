@@ -1,0 +1,11 @@
+Whats up whats up
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
+		echo $outcome
