@@ -1,0 +1,8 @@
+
+class Bird {
+
+	private:
+	
+	public:
+	
+};
