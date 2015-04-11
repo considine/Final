@@ -1,4 +1,6 @@
 #include "SDL/SDL.h"
+#include <iostream>
+using namespace std;
 
 int main ( int artc, char* args[] )
 {
@@ -14,20 +16,36 @@ int main ( int artc, char* args[] )
 	// Load Image
 	hello = SDL_LoadBMP("background.bmp");
 
-	// Apple Image to the screen
-	SDL_BlitSurface(hello, NULL, screen, NULL);
+	bool quit = false;
 
-	// Update screen
-	SDL_Flip(screen);
+	SDL_Event e;
+	
+	while (!quit) {
+		cout << "1" << endl;
+		SDL_BlitSurface(hello, NULL, screen, NULL);
+		SDL_Flip(screen);
+		while (SDL_PollEvent(&e) != 0){
+			cout << "2" << endl;
+			if (e.type == SDL_QUIT) {	
+				cout << "3" << endl;
+				quit = true;
+			}
+			// Apple Image to the screen
+		//	SDL_BlitSurface(hello, NULL, screen, NULL);
 
-	// pause
-	SDL_Delay(2000);
+			// Update screen
+		//	SDL_Flip(screen);
 
-	// free loaded image
-	SDL_FreeSurface(hello);
+			// pause
+			//SDL_Delay(2000);
 
+			// free loaded image
+			SDL_FreeSurface(hello);
+		}
+	}
+	
 	// quit
-	SDL_Quit();
+	//SDL_Quit();
 	
 return 0;
 }
