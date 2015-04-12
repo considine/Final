@@ -18,7 +18,7 @@ class Bird {
 		int ypos;
 		double velocity;
 		double acceleration;
-	
+		SDL_Texture* birdTexture;	
 };
 
 
