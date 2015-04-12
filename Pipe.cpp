@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iostream>
 #include "Pipe.h"
 
 using namespace std;
