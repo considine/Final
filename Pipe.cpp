@@ -5,7 +5,10 @@
 using namespace std;
 
 Pipe::Pipe() {
-
+	xpos1=360;
+	xpos2=360;
+	//ypos1=????
+	ypos2=ypos1+gapSize;
 }
 
 int Pipe::getX1() {
@@ -40,5 +43,10 @@ void Pipe::setY2() {
 }
 
 int isDead() {
+	if (xpos1<(-1*gapSize))
+		return 1;
+	else
+		return 0;
+}
 
 }
