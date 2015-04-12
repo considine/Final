@@ -4,6 +4,7 @@
 
 class Pipe {
 	public:
+		Pipe();
 		int getX1();
 		int getY1();
 		int getX2();
