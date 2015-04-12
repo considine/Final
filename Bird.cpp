@@ -25,7 +25,7 @@ int isDead(){
 	}
 	else reutrn 0;
 	*/
-	reutrn 1;	
+	return 1;	
 }
 
 void jump() {
