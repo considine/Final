@@ -2,8 +2,23 @@
 #include <SDL2/SDL.h>
 
 
-bird::bird(int screenx, int screeny) { //constructor
-	screenPosX = screenx/2; screenPosY = screeny/2; // set the birds relative screen postion (half width&h
+bird::bird() { //constructor
 }
 
 
+void bird::setInitial(int x, int y) {
+	screenPosX = x;
+	screenPosY = y;
+}
+	
+void bird::jump() {
+	screenPosY -= 40;
+}
+
+void bird::fall() {
+	screenPosY += 1;
+}
+
+int bird::getHeight() {
+	return screenPosY;
+}

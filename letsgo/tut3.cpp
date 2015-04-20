@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 #include <iostream>
-#include "bird.h"
+
 using namespace std;
 
 int SCREEN_HEIGHT = 450;
@@ -21,7 +21,6 @@ SDL_Surface* flappybird = NULL;
 SDL_Surface* gXOut = NULL;
 SDL_Surface* gKeyPressSurfaces[ KEY_PRESS_SURFACE_TOTAL ];
 SDL_Surface* gCurrentSurface = NULL;
-SDL_Surface* gStretchedSurface = NULL;
 
 
 bool init() {
@@ -47,11 +46,8 @@ bool loadMedia() // the picture on the screen
 {
 	bool success = true;
 	gKeyPressSurfaces[ KEY_PRESS_SURFACE_DEFAULT ] = loadSurface( "background.bmp");
-	
-	flappybird = loadSurface("bird.bmp");
-
-	
 	gKeyPressSurfaces[ KEY_PRESS_SURFACE_UP ] = loadSurface("bird.bmp");
+	gXOut = SDL_LoadBMP ("x.bmp");
 	if (flappybird == NULL) return false;
 	return true;
 }
@@ -72,52 +68,31 @@ SDL_Surface* loadSurface (string path) {
 	return loadedSurface;
 } 
 
-
 int main ( int argc, char* args[] ) {
-	bird jack();
 	init();
 	loadMedia();
 	bool quit = false;
 	SDL_Event e;
-	int i =0;
-
-	SDL_Rect stretchRect;
-        stretchRect.x =SCREEN_WIDTH/2;
-        stretchRect.y =SCREEN_HEIGHT/2;
-        stretchRect.w = 50;
-        stretchRect.h = 50;
-
+	gCurrentSurface = gKeyPressSurfaces[ KEY_PRESS_SURFACE_DEFAULT ];
 	while (!quit) {
-				//first redraw background
-				i++;
-                                gCurrentSurface = gKeyPressSurfaces[ KEY_PRESS_SURFACE_DEFAULT ];
-                                SDL_BlitSurface( gCurrentSurface, NULL, gScreenSurface, NULL);
-                                gCurrentSurface = gKeyPressSurfaces[ KEY_PRESS_SURFACE_UP ];
-                                SDL_BlitScaled( gCurrentSurface, NULL, gScreenSurface, &stretchRect);
-				if (i>8) {
-					stretchRect.y++;
-					i=0;
-				}
 		while ( SDL_PollEvent (&e )!= 0) {
 			if (e.type ==SDL_QUIT) quit = true;
-
 			else if( e.type == SDL_KEYDOWN){	
 				switch(e.key.keysym.sym)
 				{
 					case SDLK_UP:
-					stretchRect.y-=50;
-							
+					gCurrentSurface = gKeyPressSurfaces[ KEY_PRESS_SURFACE_UP ];
 					break;
 					case SDLK_ESCAPE:
 					quit = true;
 					default:
 					gCurrentSurface = gKeyPressSurfaces [KEY_PRESS_SURFACE_DEFAULT ];
-					SDL_BlitSurface( gCurrentSurface, NULL, gScreenSurface, NULL);
 					break;
 				}
 			}
 		}
 		
+		SDL_BlitSurface( gCurrentSurface, NULL, gScreenSurface, NULL);
 		SDL_UpdateWindowSurface(gWindow);
 	}	
 	close();
