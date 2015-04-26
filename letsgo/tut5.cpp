@@ -22,7 +22,8 @@ SDL_Surface* gXOut = NULL;
 SDL_Surface* gKeyPressSurfaces[ KEY_PRESS_SURFACE_TOTAL ];
 SDL_Surface* gCurrentSurface = NULL;
 SDL_Surface* gStretchedSurface = NULL;
-
+SDL_Renderer* gRenderer = NULL;
+SDL_Texture* gTexture = NULL;
 
 bool init() {
 	bool success = true;
@@ -69,6 +70,7 @@ void close () {
 SDL_Surface* loadSurface (string path) {
 	SDL_Surface* loadedSurface = SDL_LoadBMP( path.c_str() );
 	if (loadedSurface == NULL ) cout <<"UNABLE TO LOAD SURFACE"<<path<<endl;
+	SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0, 0 ) );
 	return loadedSurface;
 } 
 

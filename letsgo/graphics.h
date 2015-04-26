@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>  //include the image library
 #include <string>
 #include "bird.h"
+#include "pipes.h"
 using namespace std;
 class graphics {
 	private:
@@ -10,13 +11,22 @@ class graphics {
 		int SCREEN_WIDTH;
 		SDL_Window* gWindow; // the graphics window
 		SDL_Surface* gScreenSurface; //The screen surface
-		SDL_Surface* whichSurface[5]; //array of five different surfaces which might be loaded
+		SDL_Surface* whichSurface[9]; //array of five different surfaces which might be loaded
+		SDL_Surface* birdA[8]; //array of five different surfaces which might be loaded
 		SDL_Surface* background;
+		SDL_Renderer* gRenderer;
 		SDL_Event e; //for quitting etc	public:
+		bool michaelscott; //press m to find out!
+		int score; //how many pipes have been passed
+		bool QUIT1;  //force quit
+		bool ufo; //to go into UFO mode
+		bool Invisible;  //these variables have fun effects ;)
+		bool invincible; 
 	public:
 		graphics(int = 450, int = 350); //constructor which sets the screen height and width
+		~graphics();
 		bird jack;
-		~graphics(); //destructor, which closes the window
+		pipes bar;
 		void init(); //initializes window etc, return boolean
 		void loadMedia(); //takes an image and loads it
 		SDL_Surface* loadSurface(string path);
@@ -26,5 +36,12 @@ class graphics {
 		void blitground(int);
 		void checkCrash(int); // sees if the bird has crashed
 		void menu(); //displays the menu
+		void initialFreeze();
+		void drawSky(); //draw the top rectangle
+		void drawPipes(); //draws the pipes, takes which pipe 
+		void lose();
+		void QUIT(); //quits
+		void UFO(); //turns on UFO mode
+		void off(); //turns cheats off
 };
 #endif
