@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = graphics.cpp main.cpp bird.cpp
+OBJS =  pipes.cpp bird.cpp main.cpp graphics.cpp
 
 #LINKER_FLAGS
 LINKER_FLAGS = -lSDL2
