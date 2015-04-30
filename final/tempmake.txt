@@ -1,0 +1,11 @@
+#OBJS specifies which files to compile as part of the project
+OBJS = flappybird.cpp bird.cpp
+
+#LINKER_FLAGS
+LINKER_FLAGS = -lSDL2
+
+#OBJ_NAME speciies name of executable
+OBJ_NAME = flappybird
+
+all: $(OBJS)
+	g++ $(OBJS) $(LINKER_FLAGS) -o $(OBJ_NAME)
