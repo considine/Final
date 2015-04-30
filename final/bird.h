@@ -1,7 +1,6 @@
 #ifndef BIRD_H
 #define BIRD_H
 
-
 class bird { 
 	public:
 		bird();  //bird constructor. flalbacks = screen h/w
@@ -17,6 +16,7 @@ class bird {
 		int getsizeL(); //returns the birds length
 		int getsizeW(); //returns the birds width
 		void setScreen(int=500, int=500); //sets the screen size for proper communitcation
+
 	private:
 		bool Baccelerator;  //'Boolean accelerator' indicates falling
 		int screenPosX; //position relative to the screen always in center
@@ -24,7 +24,7 @@ class bird {
 		int height;	
 		int width;  // the relative sizes of the bird should be 50
 		int accelerator;
-		int speed; //how fast we're falling
+		int speed; //how fast the bird is falling
 		int sizeL; //bird length
 		int sizeW; //bird width
 		int screenL;  //Length & Width

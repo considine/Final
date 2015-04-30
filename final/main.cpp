@@ -1,9 +1,8 @@
 #include "graphics.h"
-#include <iostream>
-
 
 int main()
 {
-	graphics image(500, 500); //create screen;	
+	graphics image(500, 500); // game is all contained in graphics class	
 
+	return 0;
 }

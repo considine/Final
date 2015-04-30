@@ -9,7 +9,7 @@ bird::bird() { //constructor
 }
 
 
-void bird::setInitial(int x, int y, int L, int W) {
+void bird::setInitial(int x, int y, int L, int W) { // initial values are set
 	accelerator = 0;
 	screenPosX = x;
 	screenPosY = y;

@@ -60,7 +60,7 @@ void graphics::init() {
 }
 
 
-void graphics::loadMedia() {
+void graphics::loadMedia() { // loading all of the images used in the game
 	whichSurface[0] = loadSurface("background.bmp");  //Using an array
 	birdA[0] = loadSurface("bird.bmp"); // of surfaces with the 
 	SDL_SetColorKey( birdA[0], SDL_TRUE, SDL_MapRGB( birdA[0]->format, 0, 0, 0 ) );
